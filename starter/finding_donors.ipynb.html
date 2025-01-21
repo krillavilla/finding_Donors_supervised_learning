@@ -256,8 +256,31 @@ List three of the supervised learning models above that are appropriate for this
  
 **HINT:** 
  
-Structure your answer in the same format as above^, with 4 parts for each of the three models you pick. Please include references with your answer. <hr class="ls0"></span><span class="s0">#%% md 
-</span><span class="s1">**Answer:** <hr class="ls0"></span><span class="s0">#%% md 
+Structure your answer in the same format as above^, with 4 parts for each of the three models you pick. Please include references with your answer. 
+ 
+ <hr class="ls0"></span><span class="s0">#%% md 
+</span><span class="s1">**Answer:** 
+ 
+Model 1: Random Forest 
+ 
+Used For: Random Forests are widely used in finance for credit scoring and risk assessment. 
+Strengths: They handle large datasets with higher dimensionality well, are robust to overfitting due to averaging, and can handle missing values. 
+Weaknesses: They can be computationally intensive and less interpretable compared to simpler models. 
+Suitability: Given the high dimensionality of the census data and the need for robust predictions, Random Forests are a good candidate due to their ability to handle complex datasets and provide feature importance. 
+ 
+Model 2: Support Vector Machine 
+ 
+Used For: SVMs are used in image recognition tasks, such as handwriting recognition. 
+Strengths: They are effective in high-dimensional spaces and are versatile with different kernel functions. 
+Weaknesses: They can be memory-intensive and slow to train on large datasets. 
+Suitability: SVMs are suitable for this problem because they can handle the high-dimensional feature space of the census data and provide good generalization performance. 
+ 
+Model 3: Gradient Boosting 
+ 
+Used For: Gradient Boosting is used in web search ranking and recommendation systems. 
+Strengths: They provide high predictive accuracy, can handle various types of data, and are robust to overfitting. 
+Weaknesses: They can be slow to train and require careful tuning of hyperparameters. 
+Suitability: Gradient Boosting is a good candidate for this problem due to its high accuracy and ability to handle the complex relationships in the census data. <hr class="ls0"></span><span class="s0">#%% md 
 </span><span class="s1">### Implementation - Creating a Training and Predicting Pipeline 
 To properly evaluate the performance of each model you've chosen, it's important that you create a training and predicting pipeline that allows you to quickly and effectively train models using various sizes of training data and perform predictions on the testing data. Your implementation here will be used in the following section. 
 In the code block below, you will need to implement the following: 
@@ -370,7 +393,9 @@ Look at the graph at the bottom left from the cell above(the visualization creat
 * metrics - F score on the testing when 100% of the training data is used,  
 * prediction/training time 
 * the algorithm's suitability for the data. <hr class="ls0"></span><span class="s0">#%% md 
-</span><span class="s1">**Answer:** <hr class="ls0"></span><span class="s0">#%% md 
+</span><span class="s1">**Answer:** 
+ 
+Based on the evaluation performed, the Gradient Boosting model is the most appropriate for the task of identifying individuals that make more than $50,000. The model has the highest F-score on the testing set when 100% of the training data is used, indicating that it has the best balance of precision and recall. Although the model has a longer training time compared to the other models, the prediction time is reasonable and the model provides high accuracy and F-score on the testing set. The algorithm is suitable for the data because it can handle the high dimensionality and complex relationships in the census data, providing high predictive accuracy and robustness to overfitting. <hr class="ls0"></span><span class="s0">#%% md 
 </span><span class="s1">### Question 4 - Describing the Model in Layman's Terms 
  
 * In one to two paragraphs, explain to *CharityML*, in layman's terms, how the final model chosen is supposed to work. Be sure that you are describing the major qualities of the model, such as how the model is trained and how the model makes a prediction. Avoid using advanced mathematical jargon, such as describing equations. 
@@ -378,7 +403,9 @@ Look at the graph at the bottom left from the cell above(the visualization creat
 **HINT:** 
  
 When explaining your model, if using external resources please include all citations. <hr class="ls0"></span><span class="s0">#%% md 
-</span><span class="s1">**Answer:**  <hr class="ls0"></span><span class="s0">#%% md 
+</span><span class="s1">**Answer:** 
+ 
+Gradient Boosting is a machine learning algorithm that works by combining multiple simple models, called weak learners, to create a more accurate and robust model. The algorithm works by training each weak learner to correct the mistakes of the previous weak learner, gradually improving the model's performance. In simple terms, the algorithm builds a team of weak learners, where each learner is good at a specific task, and combines their individual predictions to make a final prediction that is more accurate than any of the individual predictions. This process is repeated multiple <hr class="ls0"></span><span class="s0">#%% md 
 </span><span class="s1">### Implementation: Model Tuning 
 Fine tune the chosen model. Use grid search (`GridSearchCV`) with at least one important parameter tuned with at least 3 different values. You will need to use the entire training set for this. In the code cell below, you will need to implement the following: 
 - Import [`sklearn.grid_search.GridSearchCV`](http://scikit-learn.org/0.17/modules/generated/sklearn.grid_search.GridSearchCV.html) and [`sklearn.metrics.make_scorer`](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html). 
@@ -441,7 +468,9 @@ Fine tune the chosen model. Use grid search (`GridSearchCV`) with at least one i
 | Accuracy Score |                   |                 | 
 | F-score        |                   |   EXAMPLE       | 
  <hr class="ls0"></span><span class="s0">#%% md 
-</span><span class="s1">**Answer:** <hr class="ls0"></span><span class="s0">#%% md 
+</span><span class="s1">**Answer:** 
+ 
+The optimized model's accuracy and F-score on the testing data are 0.8378 and 0.6717, respectively. These scores are better than the unoptimized model, which had an accuracy of 0.8371 and an F-score of 0.6713. The results from the optimized model are significantly better than the naive predictor benchmarks, which had an accuracy of 0.2478 and an F-score of 0.2917. This demonstrates the effectiveness of the optimized model in making accurate predictions on the census data. <hr class="ls0"></span><span class="s0">#%% md 
 </span><span class="s1">---- 
 ## Feature Importance 
  
@@ -450,7 +479,13 @@ An important task when performing supervised learning on a dataset like the cens
 Choose a scikit-learn classifier (e.g., adaboost, random forests) that has a `feature_importance_` attribute, which is a function that ranks the importance of features according to the chosen classifier.  In the next python cell fit this classifier to training set and use this attribute to determine the top 5 most important features for the census dataset. <hr class="ls0"></span><span class="s0">#%% md 
 </span><span class="s1">### Question 6 - Feature Relevance Observation 
 When **Exploring the Data**, it was shown there are thirteen available features for each individual on record in the census data. Of these thirteen records, which five features do you believe to be most important for prediction, and in what order would you rank them and why? <hr class="ls0"></span><span class="s0">#%% md 
-</span><span class="s1">**Answer:** <hr class="ls0"></span><span class="s0">#%% md 
+</span><span class="s1">**Answer:** 
+ 
+1. **Occupation**: Occupation is likely to be a strong predictor of income, as certain professions are associated with higher salaries than others. 
+2. **Education**: Education level is often correlated with income, as individuals with higher education levels tend to earn more. 
+3. **Age**: Age can be an important factor in determining income, as older individuals may have more work experience and higher salaries. 
+4. **Hours per week**: The number of hours worked per week can impact income, as individuals who work more hours may earn more. 
+5. **Capital gain**: Capital gain is a direct source of income and can be a strong predictor of whether an individual makes more than $50,000. <hr class="ls0"></span><span class="s0">#%% md 
 </span><span class="s1">### Implementation - Extracting Feature Importance 
 Choose a `scikit-learn` supervised learning algorithm that has a `feature_importance_` attribute availble for it. This attribute is a function that ranks the importance of each feature when making predictions based on the chosen algorithm. 
  
@@ -477,7 +512,9 @@ Observe the visualization created above which displays the five most relevant fe
 * How do these five features compare to the five features you discussed in **Question 6**? 
 * If you were close to the same answer, how does this visualization confirm your thoughts?  
 * If you were not close, why do you think these features are more relevant? <hr class="ls0"></span><span class="s0">#%% md 
-</span><span class="s1">**Answer:** <hr class="ls0"></span><span class="s0">#%% md 
+</span><span class="s1">**Answer:** 
+ 
+The five features identified by the model are capital-gain, age, hours-per-week, marital-status_Married-civ-spouse, and education-num. These features are similar to the ones I discussed in Question 6, with the exception of marital-status_Married-civ-spouse. The visualization confirms my thoughts by showing that capital-gain, age, hours-per-week, and education-num are important features for predicting income. The marital-status_Married-civ-spouse feature may be relevant because married individuals may have higher household incomes and be more likely to donate to charity. <hr class="ls0"></span><span class="s0">#%% md 
 </span><span class="s1">### Feature Selection 
 How does a model perform if we only use a subset of all the available features in the data? With less features required to train, the expectation is that training and prediction time is much lower — at the cost of performance metrics. From the visualization above, we see that the top five most important features contribute more than half of the importance of **all** features present in the data. This hints that we can attempt to *reduce the feature space* and simplify the information required for the model to learn. The code cell below will use the same optimized model you found earlier, and train it on the same training set *with only the top five important features*.  <hr class="ls0"></span><span class="s0">#%% 
 # Import functionality for cloning a model</span>
@@ -504,7 +541,9 @@ How does a model perform if we only use a subset of all the available features i
  
 * How does the final model's F-score and accuracy score on the reduced data using only five features compare to those same scores when all features are used? 
 * If training time was a factor, would you consider using the reduced data as your training set? <hr class="ls0"></span><span class="s0">#%% md 
-</span><span class="s1">**Answer:** <hr class="ls0"></span><span class="s0">#%% md 
+</span><span class="s1">**Answer:** 
+ 
+The final model's F-score and accuracy score on the reduced data using only five features are slightly lower than those scores when all features are used. The accuracy score on the reduced data is 0.8443, compared to 0.8378 for the full data, and the F-score on the reduced data is 0.6849, compared to 0.6717 for the full data. If training time was a factor, I would consider using the reduced data as the training set, as the reduction in performance is minimal compared to the reduction in training time. The reduced data still provides good predictive accuracy and F-score, making it a viable option for training the model. <hr class="ls0"></span><span class="s0">#%% md 
 </span><span class="s1">&gt; **Note**: Once you have completed all of the code implementations and successfully answered each question above, you may finalize your work by exporting the iPython Notebook as an HTML document. You can do this by using the menu above and navigating to   
 **File -&gt; Download as -&gt; HTML (.html)**. Include the finished document along with this notebook as your submission.</span></pre>
 </body>
